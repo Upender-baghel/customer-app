@@ -1,0 +1,66 @@
+<div class="form-control bg-light">
+
+    <nav class="nav navbar navbar-dark bg-dark  ">
+        <div class="container-fluid ">
+            <h1 style="color: aliceblue; cursor: pointer;" routerLink="/login" > Ahom Tec 🕉</h1>
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@mdo">Add Employee</button>
+
+                <button class="btn btn-danger m-3 " (click)="logout()">logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade bg-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center ">
+              <h3 class="modal-title text-center " id="exampleModalLabel">Add Employees</h3>
+              <button type="button" class="btn-close btn btn-outline-danger shadow" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="homeForm">
+                    <div class="mb-3">
+                        <label for="" class="form-label"><b>Username</b></label>
+                        <input type="text" class="form-control" id="username" formControlName="username">
+                        <span *ngIf="username && username.invalid && (username.dirty || username.touched)" class="text-danger">
+                          <span *ngIf="username.errors?.['required']"> This Field is Required</span>
+                          <span *ngIf="username.errors?.['pattern']">Name Should be A to Z Characters</span>
+                        </span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label"><b>Mobile No.</b></label>
+                        <input type="mobile" class="form-control" id="mobile" formControlName="mobile">
+                        <span *ngIf="mobile && mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+                          <span *ngIf="mobile.errors?.['required']"> This Field is Required</span>
+                          <span *ngIf="mobile.errors?.['pattern']">Name Should be A to Z Characters</span>
+                        </span>
+                      </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label"><b>Email</b></label>
+                      <input type="email" class="form-control" id="email" formControlName="email">
+                      <span *ngIf="email && email.invalid && (email.dirty || email.touched)" class="text-danger">
+                        <span *ngIf="email.errors?.['required']"> This Field is Required</span>
+                        <span *ngIf="email.errors?.['pattern']">Name Should be A to Z Characters</span>
+                      </span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label"><b>Date & Time of Submission</b></label>
+                      <input type="datetime-local" class="form-control" id="date" formControlName="date">
+                      <span *ngIf="date && date.invalid && (date.dirty || date.touched)" class="text-danger">
+                        <span *ngIf="date.errors?.['required']"> This Field is Required</span>
+                        </span>
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary " id="btn" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="btn" data-bs-dismiss="modal" (click)="onSubmit()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
