@@ -29,7 +29,7 @@ import { EmploysComponent } from './employs/employs.component';
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     ToastrModule.forRoot({
-      timeOut:1000
+      timeOut:2000
     }),
 
   ],

@@ -1,75 +1,92 @@
-<img src="assets\pic7.jpg" width="100%" height="auto" style="display: block; position: fixed;" alt="error">
-<div class="container" style="position: fixed;">
+<img src="assets\pic7.jpg" class="img"   alt="error">
+<div class="container">
 
-    <header class="header d-flex text-center">
+    <header class="header d-flex">
         <div>
             <img src="assets/pic1.png" alt="error" width="120px">
         </div>
         <h1 class="m-4 text-info"> Register Form </h1>
 
     </header>
-    <form [formGroup]="registerForm" class=" m-4">
+    <form [formGroup]="registerForm" id="form" class="m-4">
         <div class="mb-3">
             <label for=""><b>Name</b></label>
-            <input type="text" class="form-control shadow"
-                style="background: transparent; border: transparent; width: 30%;" id="name"
-                placeholder="Enter Your Name" formControlName="name" required>
+            <input type="text" class="form-control shadow" pattern="[a-z A-Z]*" id="name" placeholder="Enter Your Name"
+                formControlName="name" required>
             <span *ngIf="name && name.invalid && (name.dirty || name.touched)" class="text-danger">
-                <span *ngIf="name.errors?.['required']">This Field is Required</span>
-                <span *ngIf="name.errors?.['pattern']">Name Should be A to Z Characters</span>
+                <span *ngIf="name.errors?.['required']"><b>This Field is Required</b></span>
+                <span *ngIf="name.errors?.['pattern']"><b>Name Should be A to Z Characters</b></span>
             </span>
         </div>
 
         <div class="mb-3">
             <label for=""><b>Mobile No.</b></label>
-            <input type="number" class="form-control shadow"
-                style="background: transparent; border: transparent; width: 30%;" placeholder="Enter Your Mob Number"
-                id="mobile" formControlName="mobile">
-            <span *ngIf="mobile && mobile.invalid && (mobile.dirty || mobile.touched)">
-                <span *ngIf="mobile.errors?.['required']">This Field is Required</span>
-                <span *ngIf="mobile.errors?.['pattern']">Please Enter Valid Number</span>
+            <input type="number" class="form-control shadow" pattern="[789][0-9]{9}" placeholder="Enter Your Mob Number" id="mobile"
+                formControlName="mobile">
+            <span class="text-danger" *ngIf="mobile && mobile.invalid && (mobile.dirty || mobile.touched)">
+                <span *ngIf="mobile.errors?.['required']"><b>This Field is Required</b></span>
+                <span *ngIf="mobile.errors?.['pattern']"><b>Please Enter Valid Number</b></span>
             </span>
         </div>
 
 
         <div class="mb-3">
             <label for=""><b>Address</b></label>
-            <input type="text" class="form-control shadow"
-                style="background: transparent; border: transparent; width: 30%;" id="address"
-                placeholder="Enter Your Address" formControlName="address" required>
+            <input type="text" class="form-control shadow" id="address" placeholder="Enter Your Address"
+                formControlName="address" required>
             <span *ngIf="address && address.invalid && (address.dirty || address.touched)" class="text-danger">
-                <span *ngIf="address.errors?.['required']">This Field is Required</span>
+                <span *ngIf="address.errors?.['required']"><b>This Field is Required</b></span>
             </span>
         </div>
 
         <div class="mb-3">
             <label for=""><b>Email address</b></label>
-            <input type="email" class="form-control shadow"
-                style="background: transparent; border: transparent; width: 30%;" id="email"
-                placeholder="Enter Your Email" formControlName="email">
+            <input type="email" class="form-control shadow" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" placeholder="Enter Your Email"
+                formControlName="email">
             <span *ngIf="email && email.invalid && (email.dirty || email.touched)" class="text-danger">
-                <span *ngIf="email.errors?.['required']">This Field is Required</span>
-                <span *ngIf="email.errors?.['pattern']">Please Enter Valid Email</span>
+                <span *ngIf="email.errors?.['required']"><b>This Field is Required</b></span>
+                <span *ngIf="email.errors?.['pattern']"><b>Please Enter Valid Email</b></span>
             </span>
         </div>
 
         <div class="mb-3">
             <label for=""><b>Password</b></label>
-            <input type="password" class="form-control shadow"
-                style="background: transparent; border: transparent; width: 30%;" id="password"
-                placeholder="Enter Password" formControlName="password">
+            <div class="d-flex">
+                <input type="{{passpassword ? 'text' : 'password' }}" class="form-control shadow" id="password"
+                    placeholder="Enter Password" formControlName="password">
+                <img src="assets/view.png" id="imm" alt="error"   
+                    (click)="PasswordVisibility()" [ngClass]="{'': passpassword, '': !passpassword}">
+            </div>
+
+
+
             <span *ngIf="password && password.invalid && (password.dirty || password.touched)" class="text-danger">
-                <span *ngIf="password.errors?.['required']">This Field is Required</span>
-                <span *ngIf="password.errors?.['minlength']">Minimum length of password is more than 5
+                <span *ngIf="password.errors?.['required']"><b>This Field is Required</b></span>
+                <span *ngIf="password.errors?.['minlength']"><b></b>
                     characters.</span>
-                <span *ngIf="password.errors?.['maxlength']">The maximum length of the password should be 12
-                    characters.</span>
+                <span *ngIf="password.errors?.['maxlength']"><b>The maximum length of the password should be 12
+                        characters.</b></span>
             </span>
+        </div>
+
+        <div class="mb-3">
+            <label for=""><b>Confirm Password</b></label>
+           
+            <input type="password" class="form-control shadow" id="cpassword"
+                placeholder="Enter Confirm Password" formControlName="cpassword">
+            
+
+
+            <span *ngIf="cpassword && cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="text-danger">
+                <span *ngIf="cpassword.errors?.['required']"><b>This Field is Required</b></span>
+            </span>
+                    
         </div>
         <button type="button" (click)="onClick()" class="btn btn-success shadow">Register</button>
         <br>
 
-        Click Here<a routerLink="/login" class="text-dark"> LogIn  </a>
+
+        Click Here<a routerLink="/login" class="text-primary"> LogIn </a>
     </form>
 
 

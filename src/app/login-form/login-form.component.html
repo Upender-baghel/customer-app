@@ -1,9 +1,9 @@
-<img src="assets\pic7.jpg" width="100%" height="auto" style="display: block; position: fixed;" alt="error">
+<img src="assets\pic7.jpg" width="100%" id="img" alt="error">
 <div class="container" style="position: fixed;">
 
   <div class="header text-center d-flex  text-dark text-light">
     <img src="assets/pic9.png" alt="error" width="120px">
-    <h1 style="text-shadow: 10px red; margin-left: 50px; margin-top: 25px;" class="  text-dark hover "> Login Form </h1>
+    <h1 id="hi" class="text-primary hover"> Login Form </h1>
 
 
   </div>
@@ -14,19 +14,18 @@
 
       <div class="form-group m-3">
         <label><b>Email</b></label>
-        <input type="text" class="form-control transparent shadow "
-          style="border: grey; background:transparent;width: 30%;" placeholder="Enter your Email" id="email"
+        <input type="text" class="form-control transparent shadow " placeholder="Enter your Email" id="email"
           formControlName="email">
         <span *ngIf="email && email.invalid &&  (email.dirty || email.touched)" class="text-danger">
           <span *ngIf="email.errors?.['required']"><b>Please Enter your email</b></span>
-          <span *ngIf="email.errors?.['pattern']"><b>email is invalid</b></span>
+          <span *ngIf="email.errors?.['pattern']"><b>Email is invalid</b></span>
         </span>
       </div>
 
       <div class="form-group m-3">
         <label> <b>Password</b> </label>
-        <input type="text" class="form-control shadow  " style="background: transparent;border: grey;width: 30%; "
-          placeholder="Enter your Password" id="Password" formControlName="password">
+        <input type="text" class="form-control shadow  " placeholder="Enter your Password" id="Password"
+          formControlName="password">
         <span *ngIf="password && password.invalid &&  (password.dirty || password.touched)" class="text-danger">
           <span *ngIf="password.errors?.['required']"><b>Please Enter your password</b></span>
           <span *ngIf="password.errors?.['pattern']"><b>Password is invalid</b></span>
@@ -36,7 +35,8 @@
 
     </form>
     <a routerLink="/register"> Don`t Have Account </a> OR <br>
-    <a routerLink="/register">SignUp</a>
+    <a routerLink="/register"> SignUp </a>
   </div>
 
 </div>
+

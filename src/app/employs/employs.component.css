@@ -18,3 +18,17 @@
 
 
 }
+
+button:hover{
+    transform: scale(1.2);
+
+
+}
+input:hover{
+    transform: scale(1);
+
+}
+
+
+
+
